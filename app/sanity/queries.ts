@@ -36,3 +36,12 @@ export const RECORD_QUERY = groq`*[_type == "record" && slug.current == $slug][0
     duration
   }
 }`
+
+export const TRACK_DETAILS_QUERY = groq`*[_type == "track" && slug.current == $slug][0]{
+  _id,
+  title,
+  "slug": slug.current,
+  "artist": artist->name,
+  duration,
+  lyrics
+}`
