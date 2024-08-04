@@ -20,6 +20,10 @@ export const trackType = defineType({
         input: Duration,
       },
     }),
+    defineField({
+      name: 'lyrics',
+      type: 'text',
+    }),
   ],
   preview: {
     select: {
