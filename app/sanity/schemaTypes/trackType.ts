@@ -23,6 +23,7 @@ export const trackType = defineType({
     defineField({
       name: 'lyrics',
       type: 'text',
+      description: 'The lyrics of the track',
     }),
   ],
   preview: {

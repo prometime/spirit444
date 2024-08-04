@@ -7,7 +7,6 @@ type LoaderData = {
   track: {
     title: string;
     artist: string;
-    album: string;
     lyrics: string;
   };
 };
@@ -33,7 +32,6 @@ export default function TrackDetails() {
     <div>
       <h1>{track.title}</h1>
       <p><strong>Artist:</strong> {track.artist}</p>
-      <p><strong>Album:</strong> {track.album}</p>
       <div>
         <h2>Lyrics</h2>
         <pre>{track.lyrics}</pre>
