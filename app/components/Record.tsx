@@ -1,4 +1,5 @@
 import {createDataAttribute} from '@sanity/visual-editing/remix'
+import {Link} from '@remix-run/react'
 
 import {LikeDislike} from '~/components/LikeDislike'
 import {RecordCover} from '~/components/RecordCover'
@@ -50,7 +51,9 @@ export function Record({data}: RecordProps) {
                 key={track._key}
                 className="flex items-center justify-between py-3"
               >
-                <span className="text-lg">{track.title}</span>
+                <Link to={`/track/${track._key}`} className="text-lg">
+                  {track.title}
+                </Link>
                 {track.duration ? (
                   <span className="text-sm font-bold">
                     {secondsToMinutes(track.duration)}
