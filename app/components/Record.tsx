@@ -51,7 +51,7 @@ export function Record({data}: RecordProps) {
                 key={track._key}
                 className="flex items-center justify-between py-3"
               >
-                <Link to={`/track/${track._key}`} className="text-lg">
+                <Link to={`/track/${track.slug}`} className="text-lg">
                   {track.title}
                 </Link>
                 {track.duration ? (

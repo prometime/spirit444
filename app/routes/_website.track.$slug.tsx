@@ -1,13 +1,13 @@
 import { useLoaderData } from "remix";
 import type { LoaderFunction } from "remix";
 import { json } from "remix";
-import { getTrackDetails } from "~/models/track.server";
+import { TRACK_QUERY } from "~/queries/track";
+import { fetchGraphQL } from "~/utils/graphql-client";
 
 type LoaderData = {
   track: {
     title: string;
     artist: string;
-    album: string;
     lyrics: string;
   };
 };
@@ -18,7 +18,9 @@ export const loader: LoaderFunction = async ({ params }) => {
     throw new Response("Not Found", { status: 404 });
   }
 
-  const track = await getTrackDetails(slug);
+  const response = await fetchGraphQL(TRACK_QUERY, { slug });
+  const track = response.data.track;
+
   if (!track) {
     throw new Response("Not Found", { status: 404 });
   }
@@ -33,7 +35,6 @@ export default function TrackDetails() {
     <div>
       <h1>{track.title}</h1>
       <p><strong>Artist:</strong> {track.artist}</p>
-      <p><strong>Album:</strong> {track.album}</p>
       <div>
         <h2>Lyrics</h2>
         <pre>{track.lyrics}</pre>
